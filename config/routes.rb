@@ -4,5 +4,6 @@ Rails.application.routes.draw do
 #Sessions routes
   resources :sessions, only: [:create, :new]
   delete 'sessions', to: 'sessions#logout'
+  resources :users
 
 end

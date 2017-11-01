@@ -6,3 +6,4 @@ script:
 before_script:
   - bundle exec rails db:create RAILS_ENV=test
 
+
