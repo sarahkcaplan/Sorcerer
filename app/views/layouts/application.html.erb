@@ -9,6 +9,16 @@
   </head>
 
   <body>
+    <header>
+     <h1>Sourcerer</h1>
+
+      <% if logged_in?  %>
+        <%= link_to "Logout", sessions_path, method: "DELETE" %>
+      <% else %>
+        <%= link_to "login", new_session_path %>
+      <% end %>
+    </header>
+
     <%= yield %>
   </body>
 </html>
