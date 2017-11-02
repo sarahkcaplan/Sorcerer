@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   def destroy
     user = User.find(params[:id])
     user.destroy
-    redirect_to resources_path, notice: "User was successfully destroyed."
+    redirect_to sessions_path, notice: "User was successfully destroyed."
   end
 
   private
