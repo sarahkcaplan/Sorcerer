@@ -21,10 +21,7 @@ ActiveRecord::Schema.define(version: 20171101215204) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["fan_id"], name: "index_favorites_on_fan_id", using: :btree
-<<<<<<< HEAD
-=======
     t.index ["resource_id"], name: "index_favorites_on_resource_id", using: :btree
->>>>>>> 06188bfa57279111e5a144c5eee8e1eb0802bc18
   end
 
   create_table "resource_tags", force: :cascade do |t|

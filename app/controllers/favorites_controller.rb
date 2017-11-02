@@ -1,7 +1,9 @@
 class FavoritesController < ApplicationController
+  include SessionsHelper
 
   def create
-    @favorite = Favorite.find_or_create_by(resource_id: params[:id], fan_id: current_user.id)
+    @favorite = Favorite.find_or_create_by(resource_id: params[:resource_id], fan_id: current_user.id)
+    p "All favorites", Favorite.all
   end
 
   def destroy
