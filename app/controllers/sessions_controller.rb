@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
          redirect_to resources_path
        else
          @errors = ["Wrong email or password"]
-         render :'sessions/new'
+         render :new
        end
   end
 
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
   def logout
     session[:id]= nil
-    redirect_to '/'
+    redirect_to root_path
   end
 
   def session_params
