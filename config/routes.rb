@@ -16,5 +16,6 @@ Rails.application.routes.draw do
 
   #Resources routes
   resources :resources
+  get '/resources/search', to: 'resources#search', as: 'search_resources'
 
 end
