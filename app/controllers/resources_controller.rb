@@ -1,12 +1,8 @@
+class ResourcesController < ApplicationController
 
-class FavoritesController < ApplicationController
-
-def index
-  @resource = Resource.all
-end
 
   def index
-    @resources = Recource.all
+      @resources = Resource.all
   end
 
   def new
@@ -14,7 +10,7 @@ end
   end
 
   def create
-    @resource = Resource.new(resource_param)
+    @resource = Resource.new(resource_params)
     @resource.user = current_user
 
     if @resource.save
@@ -24,22 +20,21 @@ end
       render :new
     end
   end
-  
-    if @resource.save
-      redirect_to resources_path
-    else
-      @error = @resoure.errors.full_messages
-      render :new
-    end
-  end
-
-  def show
-    @resource = Resource.find(params[:id])
-  end
 
   def destroy
     @resource = Resource.find(params[:id])
     @resource.destroy
     redirect_to resources_path
   end
+
+  private
+
+  def resource_params
+    params.require(:resource).permit(:title, :url)
+  end
+
 end
+
+
+
+
