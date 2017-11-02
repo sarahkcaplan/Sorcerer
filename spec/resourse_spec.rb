@@ -20,6 +20,7 @@ describe ResourcesController do
     end
   end
 
+
   describe "POST create" do
     it "responces with status code 200" do
       post :create
