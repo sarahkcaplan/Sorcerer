@@ -15,10 +15,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:id] = @user.id
-      redirect_to users_path
+      redirect_to user_path(@user), notice: "User was successfully created."
     else
       @errors = @user.errors.full_messages
-      redirect_to new_user_path
+      render :new, status: 422
     end
   end
 
@@ -31,13 +31,15 @@ class UsersController < ApplicationController
     @user.update_attributes(user_params)
   end
 
-  def delete
-    User.find(params[:id]).destroy
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+    redirect_to resources_path, notice: "User was successfully destroyed."
   end
 
   private
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:email, :password, :first_name, :last_name, :user_type)
   end
 
 end

@@ -29,7 +29,7 @@ describe User do
     end
   end
 
-  describe "failing to create a new user" do
+  describe "validations for creating a new user" do
     it "fails to add a new user to the database when the first name is missing" do
       User.create( last_name: "Caplan", email: "sarah@gmail.com", password: "1234", user_type: "Student")
       expect(User.all).to be_empty
@@ -50,7 +50,7 @@ describe User do
       expect(User.all).to be_empty
     end
 
-   it "fails to add a new user to the database when the user type is missing" do
+    it "fails to add a new user to the database when the user type is missing" do
       User.create(first_name: "Sarah", last_name: "Caplan", email: "sarah@gmail.com", password: "1234")
       expect(User.all).to be_empty
     end
