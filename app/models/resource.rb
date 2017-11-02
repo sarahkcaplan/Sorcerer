@@ -7,4 +7,14 @@ class Resource < ApplicationRecord
 
   validates :title, :url, :author, presence: true
 
+  # scope :student_available, -> { joins(resource_tags).joins(tags).where('tag.permission = ?', true) }
+
+  def teachers_only?
+    !!self.tags.find_by(permission: false)
+  end
+
+  def favorites_count
+    self.fans.count
+  end
+
 end
