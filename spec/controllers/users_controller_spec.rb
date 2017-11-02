@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe UsersController do
-   let(:user) {User.create(first_name: "Sarah", last_name: "Caplan", email: "sarah@gmail.com", password: "1234", user_type: "Student")}
+   let!(:user) {User.create(first_name: "Sarah", last_name: "Caplan", email: "sarah@gmail.com", password: "1234", user_type: "Student")}
 
    describe "GET#index" do
     before(:each) { get :index }
@@ -80,7 +80,42 @@ describe UsersController do
         post :create, user: {first_name: "Maria", last_name: "Maria", email: "maria@gmail.com", password: "1234", user_type: "Student"}
         expect(response).to redirect_to User.last
       end
+    end
 
+    context "when invalid params are passed" do
+      it "responds with status code 422: Unprocessable Entity" do
+        post :create, user: {first_name: "Maria", last_name: "Maria"}
+        expect(response).to have_http_status 422
+      end
+
+      it "does not create the new user in the database" do
+        expect{post :create, user: {first_name: "Maria", last_name: "Maria"}}.to_not change{User.all.count}
+      end
+
+      it "renders the :new template" do
+        post :create, user: {first_name: "Maria", last_name: "Maria"}
+        expect(response).to render_template(:new)
+      end
+    end
+  end
+
+  describe "DELETE #destroy" do
+    it "responds with status code 302" do
+      delete :destroy, params: { id: user.id }
+    end
+
+    it "destroys the requested user" do
+      expect{ delete( :destroy, params: { id: user.id }) }.to change(User, :count).by(-1)
+    end
+
+    it "sets a notice that the user was destroyed" do
+      delete :destroy, params: { id: user.id }
+      expect(flash[:notice]).to eq "User was successfully destroyed."
+    end
+
+    it "redirects to the resources_url" do
+      delete :destroy, params: { id: user.id }
+      expect(response).to redirect_to resources_path
     end
   end
 end
