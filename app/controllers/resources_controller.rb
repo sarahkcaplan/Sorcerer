@@ -27,14 +27,22 @@ class ResourcesController < ApplicationController
     redirect_to resources_path
   end
 
+  def search
+    tag = search_params(:tag)
+
+    #pending
+  end
+
   private
 
   def resource_params
     params.require(:resource).permit(:title, :url)
   end
 
+  def search_params
+    params.permit(:tag)
+  end
+
 end
-
-
 
 
