@@ -1,0 +1,6 @@
+%h1="Main Resource Page"
+
+-resources.each do |resource|
+  =link_to resource.title resources_path(resource)
+
+  =link_to "Add resource", new_resource_path
