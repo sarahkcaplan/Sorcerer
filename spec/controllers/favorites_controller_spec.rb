@@ -1,31 +1,28 @@
 require 'rails_helper'
 
 describe FavoritesController do
-  let!(:fan) {User.create(first_name: Faker::Name.first_name,last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "password", user_type: "teacher")}
-  let!(:resource) {Resource.create(title: Faker::Book.title, url: Faker::Internet.url)}
-  let!(:favorite) {Favorite.create(resource_id: resource.id, fan_id: fan.id)}
+  let!(:fan) {User.create(first_name: "Iris", last_name: "Cosmos", email: "iris@cosmos.com", password: "password", user_type: "teacher")}
+  let!(:resource) {Resource.create(title: Faker::Book.title, url: Faker::Internet.url, author_id: fan.id)}
+
+  before do
+    session[:id] = fan.id
+  end
 
   describe "POST #create" do
     context "when a student or teacher favorites a resource for the first time" do
-      it "responds with status code 302" do
-        post :create, resource_id: 1
-        expect(response).to have_http_status 302
+
+      it "responds with status code 204" do
+        post :create, params: {resource_id: resource.id, fan_id: fan.id}
+        expect(response).to have_http_status 204
       end
+
       it "assigns the created favorite as @favorite" do
+        post :create, params: {resource_id: resource.id, fan_id: fan.id}
+        expect(assigns(:favorite).class).to eq Favorite
       end
+
       it "creates a new favorite in the database" do
-      end
-    end
-
-    context "when a student or teacher tries to re-favorite a resource" do
-      it "does not create a new favorite in the database" do
-      end
-    end
-  end
-
-  describe "POST #destroy" do
-    context "when a student or a teacher un-favorites a resource" do
-      it "removes a favorite from the database" do
+        expect { post :create, params: {resource_id: resource.id, fan_id: fan.id, id: resource.id} }.to change(Favorite, :count).by(1)
       end
     end
   end
