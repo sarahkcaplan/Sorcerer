@@ -16,25 +16,32 @@ ActiveRecord::Schema.define(version: 20171101215204) do
   enable_extension "plpgsql"
 
   create_table "favorites", force: :cascade do |t|
-    t.integer  "resource_id"
-    t.integer  "user_id"
+    t.integer  "resource_id", null: false
+    t.integer  "fan_id",      null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["fan_id"], name: "index_favorites_on_fan_id", using: :btree
   end
 
   create_table "resource_tags", force: :cascade do |t|
-    t.integer  "resource_id"
-    t.integer  "tag_id"
+    t.integer  "resource_id", null: false
+    t.integer  "tag_id",      null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   create_table "resources", force: :cascade do |t|
+    t.string   "title",      null: false
+    t.string   "url",        null: false
+    t.integer  "author_id",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_resources_on_author_id", using: :btree
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string   "name"
-    t.boolean  "permission"
+    t.string   "name",       null: false
+    t.boolean  "permission", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

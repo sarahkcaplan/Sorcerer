@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Resource.create(:title => 'Bass store', :url => 'http://www.guitarcenter.com/Bass.gc')
+Resource.create(:title => 'Brew beer', :url => 'https://www.northernbrewer.com/learn/homebrewing-101/')

@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create, :new]
   delete 'sessions', to: 'sessions#logout'
   resources :users
-
+  resources :resources
 end
