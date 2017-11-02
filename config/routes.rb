@@ -4,16 +4,16 @@ Rails.application.routes.draw do
   resources :resources do
     resources :favorites, only: [:create, :destroy]
   end
-  
+
   root to: "resources#index"
-  
+
   #Sessions routes
   resources :sessions, only: [:create, :new]
   delete 'sessions', to: 'sessions#logout'
-  
+
   #Users routes
   resources :users
-  
+
   #Resources routes
   resources :resources
 

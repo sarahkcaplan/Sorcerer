@@ -75,11 +75,11 @@ describe User do
   end
 
   describe "association between users and resources that they favorite" do
-    let(:user) {User.create(first_name: "Sarah", last_name: "Caplan", email: "sarah@gmail.com", password: "1234", user_type: "Student")}
+    let!(:user) {User.create(first_name: "Sarah", last_name: "Caplan", email: "sarah@gmail.com", password: "1234", user_type: "Student")}
 
-    let!(:resource1) {Resource.create(title: "Google", url: "google.com", author_id: 1)}
+    let!(:resource1) {Resource.create(title: "Google", url: "google.com", author: user)}
 
-    let!(:resource2) {Resource.create(title: "Amazon", url: "amazon.com", author_id: 1)}
+    let!(:resource2) {Resource.create(title: "Amazon", url: "amazon.com", author: user)}
 
     let!(:favorite1) {user.favorites.create(fan_id: user.id, resource_id: resource1.id) }
 

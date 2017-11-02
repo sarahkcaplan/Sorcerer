@@ -1,4 +1,9 @@
+
 class FavoritesController < ApplicationController
+
+def index
+  @resource = Resource.all
+end
 
   def index
     @resources = Recource.all
@@ -15,6 +20,14 @@ class FavoritesController < ApplicationController
     if @resource.save
       redirect_to resources_path
     else
+      @error = @resource.errors.full_messages
+      render :new
+    end
+  end
+  
+    if @resource.save
+      redirect_to resources_path
+    else
       @error = @resoure.errors.full_messages
       render :new
     end
@@ -24,11 +37,9 @@ class FavoritesController < ApplicationController
     @resource = Resource.find(params[:id])
   end
 
-
   def destroy
     @resource = Resource.find(params[:id])
     @resource.destroy
     redirect_to resources_path
   end
-
 end

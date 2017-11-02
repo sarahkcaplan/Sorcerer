@@ -3,4 +3,6 @@
 -resources.each do |resource|
   =link_to resource.title resources_path(resource)
 
-  =link_to "Add resource", new_resource_path
+  = link_to "Add New Resource", new_resource_path
+  = link_to("Show, {}, :class => 'action show')
+
