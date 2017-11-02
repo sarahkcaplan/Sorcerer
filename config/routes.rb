@@ -13,8 +13,12 @@ Rails.application.routes.draw do
   
   #Users routes
   resources :users
+<<<<<<< HEAD
+  resources :resources
+=======
   
   #Resources routes
   resources :resources
 
+>>>>>>> 06188bfa57279111e5a144c5eee8e1eb0802bc18
 end
