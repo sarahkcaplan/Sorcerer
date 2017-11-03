@@ -4,10 +4,11 @@ include SessionsHelper
   def show
       if current_user && current_user.user_type == 'teacher'
         @resources = Resource.all
+        @favorited_resources = current_user.resources_favorited
         render :teacher_show
       elsif current_user && current_user.user_type == 'student'
         @resources = Resource.all
-        p @resources
+        @favorited_resources = current_user.resources_favorited
         render :student_show
       else
         @errors = ["Please sign in"]
