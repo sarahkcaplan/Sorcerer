@@ -5,8 +5,9 @@
 
 %ul.nav.nav-tabs
   %li= link_to "All Resources", user_path(current_user)
-  %li= link_to "Favorites", my_favorites_path(current_user), remote: true
   %li= link_to "My Resources", my_resources_path(current_user)
+  %li.favorites-link= link_to "My Favorites", favorites_path, remote: true
+  %div.favorites-partial
 
 %ul.resources-list
 %br

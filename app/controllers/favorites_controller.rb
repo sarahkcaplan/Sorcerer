@@ -2,8 +2,13 @@ class FavoritesController < ApplicationController
   include SessionsHelper
 
   def index
-    @favorites = current_user.favorites
-    @resources = current_user.resources_favorited
+    @favorited_resources = current_user.resources_favorited
+
+    respond_to do |f|
+      f.html { render :_index}
+      f.json { render json: @favorited_resources.to_json}
+      f.js
+    end
   end
 
   def show
