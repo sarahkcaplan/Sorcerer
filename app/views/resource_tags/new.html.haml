@@ -1,6 +1,7 @@
 %h2 Add a Tag
-=form_for @resource_tags, url: new_resource_resource_tags_path do |f|
+=form_for @tag, url: resource_resource_tags_path do |f|
   =f.label :name
   =f.text_field :name
+  =f.check_box :permission
 
   =f.submit

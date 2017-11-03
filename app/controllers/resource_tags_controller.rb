@@ -2,6 +2,7 @@ class ResourceTagsController < ApplicationController
   include SessionsHelper
 
   def new
+    @tag = Tag.new
     render :new
   end
 
