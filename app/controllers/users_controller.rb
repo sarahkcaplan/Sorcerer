@@ -17,8 +17,15 @@ include SessionsHelper
 
   def teachers_my_show
     @resources = current_user.resources_posted
-    p '*****************************'
-    p @resources
+    respond_to do |format|
+      format.html { render :teacher_show }
+      format.json { render partial: '/partials/teachers_resource_display' }
+    end
+
+  end
+
+  def teachers_my_fav
+    @resources = current_user.resources_favorited
     render :teacher_show
   end
 

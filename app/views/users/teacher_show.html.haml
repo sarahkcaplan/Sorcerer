@@ -1,12 +1,15 @@
+<<<<<<< HEAD
 -# %div.search-bar
 -#   = form_tag(search_resources_path) do
 -#     %input{type: 'text', name: 'tag', placeholder: 'Search'}
 -#     %input{type: 'submit'}
 
 %ul.nav.nav-tabs
-  %li= link_to "All Resources", resources_path
-  %li= link_to "Favorites", resources_path
-  %li.active= link_to "My Resources", resources_path
+  %li= link_to "All Resources", user_path(current_user)
+  %li= link_to "Favorites", my_favorites_path(current_user), remote: true
+  %li= link_to "My Resources", my_resources_path(current_user)
 
 %ul.resources-list
-  = render partial: 'teachers_resource_display'
+  = render partial: '/partials/teachers_resource_display'
+
+= link_to "Add Resource", new_resource_path
