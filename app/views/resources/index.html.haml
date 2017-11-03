@@ -16,6 +16,7 @@
           %li.resource-tags
             - resource.tags.each do |tag|
               %span= tag.name
+          %li.resource-tags= link_to'Add a Tag', new_resource_resource_tag_path(resource.id)
           %li.resource-fans
             Fans:
             = resource.favorites_count
