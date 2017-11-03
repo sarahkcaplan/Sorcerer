@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.user_type = params[:user_type]
     if @user.save
       session[:id] = @user.id
       redirect_to user_path(@user), notice: "User was successfully created."
