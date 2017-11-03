@@ -1,5 +1,5 @@
 class ResourcesController < ApplicationController
-
+include SessionsHelper
 
   def index
       @resources = Resource.all
@@ -24,7 +24,7 @@ class ResourcesController < ApplicationController
   def destroy
     @resource = Resource.find(params[:id])
     @resource.destroy
-    redirect_to resources_path
+    redirect_to user_path(current_user)
   end
 
   def search

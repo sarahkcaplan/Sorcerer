@@ -1,0 +1,14 @@
+-@resources.each do |resource|
+  %li.resource-item
+    %ul.resource-details
+      %li.resource-title
+        = resource.title
+        %span.resource-delete= link_to "x", resource_path(resource), method: "DELETE"
+      %li.resource-url= link_to resource.url, resource.url
+      %li.resource-tags
+        - resource.tags.each do |tag|
+          %span= tag.name
+          %span= link_to "x", resource_tag_path(Tag.where('resource_id = ? and tag_id = ?', resource.id, tag.id )), method: "DELETE"
+      %li.resource-fans
+        Fans:
+        = resource.favorites_count
