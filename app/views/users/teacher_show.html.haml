@@ -6,14 +6,14 @@
 %br
 %ul
   %li.btn.btn-light= link_to "All Resources", user_path(current_user)
-  %li.btn.btn-light= link_to "Favorites", my_favorites_path(current_user)
+  %li.btn.btn-light= link_to "My Favorites", my_favorites_path(current_user)
   %li.btn.btn-light= link_to "My Resources", my_resources_path(current_user)
 
-%ul.nav.nav-tabs
-  %li.btn.btn-light= link_to "All Resources", user_path(current_user)
-  %li.btn.btn-light= link_to "My Resources", my_resources_path(current_user)
-  %li.btn.btn-light.favorites-link= link_to "My Favorites", favorites_path, remote: true
-  %div.favorites-partial
+-# %ul.nav.nav-tabs
+-#   %li.btn.btn-light= link_to "All Resources", user_path(current_user)
+-#   %li.btn.btn-light= link_to "My Resources", my_resources_path(current_user)
+-#   %li.btn.btn-light.favorites-link= link_to "My Favorites", favorites_path, remote: true
+-#   %div.favorites-partial
 
 %ul.resources-list
 %br
