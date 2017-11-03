@@ -14,8 +14,8 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    @favorite = Favorite.find_or_create_by(resource_id: params[:resource_id], fan_id: current_user.id)
-    p "All favorites", Favorite.all
+    @favorite = current_user.favorites.find_or_create_by(resource_id: params[:resource_id])
+    redirect_to :back
   end
 
   def edit

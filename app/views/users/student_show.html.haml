@@ -19,3 +19,6 @@
           %li.resource-fans
             Fans:
             = resource.favorites_count
+          %li.favorite-button
+            = form_for(:favorite, url: resource_favorites_path(resource_id: resource.id), method: "POST") do |f|
+              = f.submit
