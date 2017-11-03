@@ -15,7 +15,7 @@ class ResourcesController < ApplicationController
     @resource.author = current_user
 
     if @resource.save
-      redirect_to resources_path
+      redirect_to user_path(current_user)
     else
       @error = @resource.errors.full_messages
       render :new
