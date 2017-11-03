@@ -1,0 +1,9 @@
+%H2 Add a Resource
+=form_for @resource, url: {action: "create"} do |f|
+  =f.label :title
+  =f.text_field :title
+  =f.label :URL
+  =f.text_field :url
+  =f.submit
+
+
