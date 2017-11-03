@@ -1,0 +1,13 @@
+-# %div.search-bar
+-#   = form_tag(search_resources_path) do
+-#     %input{type: 'text', name: 'tag', placeholder: 'Search'}
+-#     %input{type: 'submit'}
+
+
+%ul.nav.nav-tabs
+  %li= link_to "All Resources", resources_path
+  %li= link_to "Favorites", resources_path
+  %li.active= link_to "My Resources", resources_path
+
+%ul.resources-list
+  = render partial: 'teachers_resource_display'
