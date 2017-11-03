@@ -1,7 +1,8 @@
 %H2 Add a Resource
-=form_for @resource, url: {action: "create"} do |f|
-  =f.label :title
-  =f.text_field :title
-  =f.label :URL
-  =f.text_field :url
-  =f.submit
+%div.container
+  =bootstrap_form_for @resource, url: {action: "create"} do |f|
+    =f.text_field :title
+    =f.text_field :url
+
+    %p.btn.btn-outline-info.my-2.my-sm-0
+    =f.submit

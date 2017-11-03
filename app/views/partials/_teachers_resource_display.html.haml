@@ -8,9 +8,9 @@
       - if resource.tags.count != 0
         %li.resource-tags
           - resource.tags.each do |tag|
-            %span= tag.name
+            %span.badge.badge-info= tag.name
             %span= link_to "x", resource_tag_path((ResourceTag.find_by_resource_id_and_tag_id(resource.id, tag.id))), method: "DELETE",data: { confirm: "Are you sure?"}
-        %li= link_to "+ tag", new_resource_resource_tag_path(resource)
+      %li= link_to "+ tag", new_resource_resource_tag_path(resource)
       %li.resource-fans
         Fans:
         = resource.favorites_count
