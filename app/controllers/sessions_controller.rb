@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(session_params[:email])
        if @user && @user.authenticate(session_params[:password])
          login(@user)
-         redirect_to resources_path
+         redirect_to user_path(@user)
        else
          @errors = ["Wrong email or password"]
          render :new

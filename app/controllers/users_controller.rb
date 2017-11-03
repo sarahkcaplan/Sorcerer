@@ -1,10 +1,17 @@
 class UsersController < ApplicationController
-  def index
-    @users = User.all
-  end
+include SessionsHelper
 
   def show
-    @user = User.find(params[:id])
+      if current_user && current_user.user_type == 'teacher'
+        @resources = Resource.all
+        render :teacher_show
+      elsif current_user && current_user == 'student'
+        @resources = Resource.all
+        render :student_show
+      else
+        @errors = ["Please sign in"]
+        render :'resources/index'
+      end
   end
 
   def new

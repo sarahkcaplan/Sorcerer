@@ -7,9 +7,9 @@
 
 %ul
   -@resources.each do |resource|
-    %li.resource-list
-      -if resource.teachers_only?
-      -else
+    -if resource.teachers_only?
+    -else
+      %li.resource-item
         %ul.resource-details
           %li.resource-title= resource.title
           %li.resource-url= link_to resource.url, resource.url
