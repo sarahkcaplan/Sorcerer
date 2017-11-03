@@ -5,8 +5,8 @@
 
 %ul.resources-classification
   %li= link_to "All Resources", resources_path
-  %li= link_to "Favorites", resources_path
-  %li= link_to "My Resources", resources_path
+  %li= link_to "Favorites", favorites_path
+  %li= link_to "My Resources", my_resources_path(current_user)
 
 %ul.resources-list
   = render partial: 'teachers_resource_display'
