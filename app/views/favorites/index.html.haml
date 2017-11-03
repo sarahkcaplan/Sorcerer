@@ -12,5 +12,5 @@
         %li.resource-fans
           Fans:
           = resource.favorites_count
-          -# = form_for(:favorite, url: resource_favorite_path(resource.id), method: "DELETE") do |f|
-          -#   = f.submit("Remove Favorite")
+          = form_for(:favorite, url: resource_favorite_path(resource_id: resource.id, favorite_id:), method: "DELETE") do |f|
+            = f.submit("Remove Favorite")
