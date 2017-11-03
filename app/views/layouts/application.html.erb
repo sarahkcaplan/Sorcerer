@@ -11,7 +11,8 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="navbar-brand">
+        <div class="navbar-brand">Sourcerer</div>
+        <div class="nav-link">
           <%= link_to "Home", resources_path  %>
         </div>
         <% if logged_in?  %>
@@ -29,7 +30,7 @@
           </div>
         <% else %>
         <div class="nav-link">
-          <%= link_to "login", new_session_path %>
+          <%= link_to "Login", new_session_path %>
         </div>
         <div class="nav-link">
           <%= link_to "Register", new_user_path  %>
@@ -37,7 +38,6 @@
         <% end %>
       </nav>
     </header>
-    <h1>Sourcerer</h1>
 
 
     <%= yield %>

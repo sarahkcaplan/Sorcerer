@@ -13,4 +13,16 @@
  */
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
+
+/*
+ *= require rails_bootstrap_forms
+ */
+ ul {
+  list-style: none
+}
+
+body {
+   padding: 15px;
+   background: #cc00cc;
+ }
 @import "bootstrap";
