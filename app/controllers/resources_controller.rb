@@ -29,8 +29,8 @@ class ResourcesController < ApplicationController
 
   def search
     tag = search_params(:tag)
-
-    #pending
+    @resources = Resource.resources_by_tags(tag)
+    render :index
   end
 
   private
