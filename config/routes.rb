@@ -20,5 +20,11 @@ Rails.application.routes.draw do
   resources :resources
   get '/resources/search', to: 'resources#search', as: 'search_resources'
 
-  resources :resource_tags, only: [:destroy]
+  #Tags routes
+  resources :resources do
+    resources :resource_tags, only: [:new, :create]
+  end
+
+  #Resource_tags routes
+  resources :resource_tags, only: [:create, :destroy]
 end
