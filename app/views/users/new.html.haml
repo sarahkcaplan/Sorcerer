@@ -1,29 +1,30 @@
 %h2 Registration Form
 
-%div.form-group
-= form_for @user do |f|
-  %p.form-control
-    = f.label :first_name
-    = f.text_field :first_name
+%div.container
+  = bootstrap_form_for @user do |f|
+    %p
+      -# = f.label :first_name
+      = f.text_field :first_name
 
-  %p
-    = f.label :last_name
-    = f.text_field :last_name
+    %p
+      -# = f.label :last_name
+      = f.text_field :last_name
 
-  %p
-    = f.label :email
-    = f.email_field :email
+    %p
+      -# = f.label :email
+      = f.email_field :email
 
-  %p
-    = f.label :password
-    = f.password_field :password
+    %p
+      -# = f.label :password
+      = f.password_field :password
 
-  %p
-    = f.label :user_type
-    %select{ :name => "user_type" }
-      %option{:value => "student"}= "Student"
-      %option{:value => "teacher"}= "Teacher"
+    %p
+      -# = f.label :user_type
+      %select{ :name => "user_type" }
+        %option{:value => "student"}= "Student"
+        %option{:value => "teacher"}= "Teacher"
 
-    = f.submit
+    %p.btn.btn-outline-info.my-2.my-sm-0
+      = f.submit
 
 

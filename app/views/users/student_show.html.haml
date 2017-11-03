@@ -5,10 +5,11 @@
 %ul.resources-classification
   %li= link_to "Favorites", favorites_path
 
-%ul
+%ul.container
   -@resources.each do |resource|
     -if resource.teachers_only?
     -else
+      %br
       %li.resource-item
         %ul.resource-details
           %li.resource-title= resource.title
@@ -20,6 +21,6 @@
             Fans:
             = resource.favorites_count
           - if !current_user.resources_favorited.include?(resource)
-            %li.favorite-button
-              = form_for(:favorite, url: resource_favorites_path(resource.id), method: "POST") do |f|
+            %li.btn.btn.btn-outline-info
+              = bootstrap_form_for(:favorite, url: resource_favorites_path(resource.id), method: "POST") do |f|
                 = f.submit

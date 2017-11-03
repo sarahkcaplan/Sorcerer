@@ -1,8 +1,6 @@
 %h2 Add a Tag
-=form_for @tag, url: resource_resource_tags_path do |f|
-  =f.label :name
+%div.container.btn.btn-outline-info.my-2.my-sm-0
+=bootstrap_form_for @tag, url: resource_resource_tags_path do |f|
   =f.text_field :name
-  =f.label :give_permission
   =f.check_box :permission
-
   =f.submit

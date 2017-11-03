@@ -1,9 +1,9 @@
-%div.search-bar
-  = form_tag(search_resources_path) do
-    %input{type: 'text', name: 'tag', placeholder: 'Search'}
-    %input{type: 'submit'}
+-# %div.search-bar
+-#   = form_tag(search_resources_path) do
+-#     %input{type: 'text', name: 'tag', placeholder: 'Search'}
+-#     %input{type: 'submit'}
 
-%ul.resources-classification
+%ul.nav.nav-tabs
   %li= link_to "All Resources", user_path(current_user)
   %li= link_to "Favorites", my_favorites_path(current_user), remote: true
   %li= link_to "My Resources", my_resources_path(current_user)

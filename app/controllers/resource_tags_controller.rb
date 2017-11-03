@@ -1,3 +1,4 @@
+
 class ResourceTagsController < ApplicationController
   include SessionsHelper
 
