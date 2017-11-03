@@ -1,7 +1,7 @@
 %h1 Resources
 
 %div.search-bar
-  = form_tag(controller: 'resources', action: 'search', :method => 'get') do
+  = form_tag(search_resources_path) do
     %input{type: 'text', name: 'tag', placeholder: 'Search'}
     %input{type: 'submit'}
 

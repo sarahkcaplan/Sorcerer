@@ -4,7 +4,7 @@
     %input{type: 'submit'}
 
 %ul.resources-classification
-  %li= link_to "All Resources", resources_path
+  %li= link_to "All Resources", user_path(current_user)
   %li= link_to "Favorites", favorites_path
   %li= link_to "My Resources", my_resources_path(current_user)
 
