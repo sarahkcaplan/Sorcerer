@@ -29,9 +29,18 @@ class ResourcesController < ApplicationController
   end
 
   def search
-    tag = search_params(:tag)
+    tag = search_params[:tag]
+    p "xxXXX**********************************************!!!!"
+    p tag
     @resources = Resource.resources_by_tags(tag)
-    render :index
+    p @resources
+    if !logged_in?
+      render :index
+    elsif current_user.user_type == "teacher"
+      render :'users/teacher_show'
+    else
+      render :'users/student_show'
+    end
   end
 
   private

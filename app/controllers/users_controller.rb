@@ -15,6 +15,13 @@ include SessionsHelper
       end
   end
 
+  def teachers_my_show
+    @resources = current_user.resources_posted
+    p '*****************************'
+    p @resources
+    render :teacher_show
+  end
+
   def new
     @user = User.new
   end
