@@ -10,14 +10,32 @@
 
   <body>
     <header>
-      <% if logged_in?  %>
-        <%= link_to "Logout", sessions_path, method: "DELETE" %>
-        <%= link_to "My Profile", user_path(current_user)  %>
-      <% else %>
-        <%= link_to "login", new_session_path %>
-        <%= link_to "Register", new_user_path  %>
-      <% end %>
-      <%= link_to "Home", resources_path  %>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="navbar-brand">
+          <%= link_to "Home", resources_path  %>
+        </div>
+        <% if logged_in?  %>
+          <div class="nav-link">
+          <%= link_to "My Profile", user_path(current_user)  %>
+          </div>
+          <div class="form-inline my-2 my-lg-0">
+            <%= form_tag(controller: 'resources', action: 'search', :method => 'get') do %>
+              <input class="form-control mr-sm-2" name="tag" placeholder="Search" type="text"></input>
+              <input class="btn btn-outline-info my-2 my-sm-0" type="submit"></input>
+            <% end %>
+          </div>
+          <div class="nav-link">
+          <%= link_to "Logout", sessions_path, method: "DELETE" %>
+          </div>
+        <% else %>
+        <div class="nav-link">
+          <%= link_to "login", new_session_path %>
+        </div>
+        <div class="nav-link">
+          <%= link_to "Register", new_user_path  %>
+        </div>
+        <% end %>
+      </nav>
     </header>
     <h1>Sourcerer</h1>
 
@@ -25,7 +43,7 @@
     <%= yield %>
 
     <% if @errors %>
-      <ul>
+      <ul class="alert alert-danger">
       <% @errors.each do |error| %>
         <li><%= error %></li>
       </ul>
