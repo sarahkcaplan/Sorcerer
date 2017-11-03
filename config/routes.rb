@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   #Favorites routes
   resources :resources do
     resources :favorites, only: [:create, :destroy]
@@ -18,5 +19,6 @@ Rails.application.routes.draw do
   resources :resources
   get '/resources/search', to: 'resources#search', as: 'search_resources'
 
-  resources :resource_tags, only: [:destroy]
+  #Resource_tags routes
+  resources :resource_tags, only: [:create, :destroy]
 end
