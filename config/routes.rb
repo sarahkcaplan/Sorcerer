@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   #Favorites routes
   resources :resources do
     resources :favorites, only: [:create, :destroy]
   end
+  resources :favorites, only: [:index]
 
   root to: "resources#index"
 

@@ -3,7 +3,7 @@
   = current_user.first_name.capitalize
 
 %ul.resources-classification
-  %li= link_to "Favorites", resources_path
+  %li= link_to "Favorites", favorites_path
 
 %ul
   -@resources.each do |resource|
@@ -19,6 +19,7 @@
           %li.resource-fans
             Fans:
             = resource.favorites_count
-          %li.favorite-button
-            = form_for(:favorite, url: resource_favorites_path(resource_id: resource.id), method: "POST") do |f|
-              = f.submit
+          - if !current_user.resources_favorited.include?(resource)
+            %li.favorite-button
+              = form_for(:favorite, url: resource_favorites_path(resource_id: resource.id), method: "POST") do |f|
+                = f.submit
