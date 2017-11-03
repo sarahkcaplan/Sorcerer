@@ -1,6 +1,7 @@
-=form_for @resource do |f|
-  =f.lable :title
+%H2 Add a Resource
+=form_for @resource, url: {action: "create"} do |f|
+  =f.label :title
   =f.text_field :title
-  =f.lable :url
+  =f.label :URL
   =f.text_field :url
   =f.submit
