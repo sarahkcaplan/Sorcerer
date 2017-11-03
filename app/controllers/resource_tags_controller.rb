@@ -17,9 +17,13 @@ class ResourceTagsController < ApplicationController
   end
 
   def destroy
-    @resource_tag = ResourceTag.where(resource: params[:resource_id], tag: tag.id)
-    resource_tag_id = @resource_tag.id
-    ResourceTag.destroy(resource_tag_id)
+    @resource_tag = ResourceTag.find(params[:id])
+    @resource_tag.destroy
+    redirect_to user_path(current_user)
+
+    #@resource_tag = ResourceTag.where(resource: params[:resource_id], tag: tag.id)
+    #resource_tag_id = @resource_tag.id
+    #ResourceTag.destroy(resource_tag_id)
   end
 
   def tag_params
