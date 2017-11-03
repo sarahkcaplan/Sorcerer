@@ -1,5 +1,7 @@
 class ResourcesController < ApplicationController
 
+  include SessionsHelper
+
   def index
     @resources = Resource.all
   end
@@ -10,7 +12,7 @@ class ResourcesController < ApplicationController
 
   def create
     @resource = Resource.new(resource_params)
-    @resource.user = current_user
+    @resource.author = current_user
 
     if @resource.save
       redirect_to resources_path
@@ -23,13 +25,20 @@ class ResourcesController < ApplicationController
   def destroy
     @resource = Resource.find(params[:id])
     @resource.destroy
-    redirect_to resources_path
+    redirect_to user_path(current_user)
   end
 
   def search
-    tag = search_params(:tag)
+    tag = search_params[:tag]
     @resources = Resource.resources_by_tags(tag)
-    render :index
+
+    if !logged_in?
+      render :index
+    elsif current_user.user_type == "teacher"
+      render :'users/teacher_show'
+    else
+      render :'users/student_show'
+    end
   end
 
   private

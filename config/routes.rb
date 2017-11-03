@@ -15,10 +15,18 @@ Rails.application.routes.draw do
 
   #Users routes
   resources :users
-
+  get '/users/:user_id/my_resources', to: 'users#teachers_my_show', as: 'my_resources'
+  get '/users/:user_id/my_favorites', to: 'users#teachers_my_fav', as: 'my_favorites'
   #Resources routes
   resources :resources
-  get '/resources/search', to: 'resources#search', as: 'search_resources'
+  post '/resources/search', to: 'resources#search', as: 'search_resources'
 
-  resources :resource_tags, only: [:destroy]
+
+  #Tags routes
+  resources :resources do
+    resources :resource_tags, only: [:new, :create]
+  end
+
+  #Resource_tags routes
+  resources :resource_tags, only: [:create, :destroy]
 end

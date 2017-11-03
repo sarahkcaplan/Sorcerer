@@ -1,18 +1,33 @@
 class UsersController < ApplicationController
-include SessionsHelper
+ include SessionsHelper
 
   def show
       if current_user && current_user.user_type == 'teacher'
         @resources = Resource.all
+        @favorited_resources = current_user.resources_favorited
         render :teacher_show
       elsif current_user && current_user.user_type == 'student'
         @resources = Resource.all
-        p @resources
+        @favorited_resources = current_user.resources_favorited
         render :student_show
       else
         @errors = ["Please sign in"]
         render :'resources/index'
       end
+  end
+
+  def teachers_my_show
+    @resources = current_user.resources_posted
+    respond_to do |format|
+      format.html { render :teacher_show }
+      format.json { render partial: '/partials/teachers_resource_display' }
+    end
+
+  end
+
+  def teachers_my_fav
+    @resources = current_user.resources_favorited
+    render :teacher_show
   end
 
   def new
