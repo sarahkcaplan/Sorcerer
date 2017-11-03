@@ -10,6 +10,23 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+
+/*
+ *= require rails_bootstrap_forms
+ */
+ ul {
+  list-style: none
+}
+
+ li {
+  list-style: none
+}
+
+body {
+   padding: 15px;
+   background: #cc00cc;
+ }
+@import "bootstrap";

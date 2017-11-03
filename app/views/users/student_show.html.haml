@@ -1,6 +1,26 @@
 %H2
   Hello
-  = @user.first_name.capitalize
+  = current_user.first_name.capitalize
 
-%ul
+%ul.resources-classification
+  %li= link_to "Favorites", favorites_path
+
+%ul.container
   -@resources.each do |resource|
+    -if resource.teachers_only?
+    -else
+      %br
+      %li.resource-item
+        %ul.resource-details
+          %li.resource-title= resource.title
+          %li.resource-url= link_to resource.url, resource.url
+          %li.resource-tags
+            - resource.tags.each do |tag|
+              %span.badge-info= tag.name
+          %li.resource-fans
+            Fans:
+            = resource.favorites_count
+          - if !current_user.resources_favorited.include?(resource)
+            %li.btn.btn.btn-outline-info
+              = bootstrap_form_for(:favorite, url: resource_favorites_path(resource.id), method: "POST") do |f|
+                = f.submit

@@ -1,23 +1,23 @@
-%h1 Resources
+%h2 Resources
 
-%div.search-bar
-  = form_tag(search_resources_path) do
-    %input{type: 'text', name: 'tag', placeholder: 'Search'}
-    %input{type: 'submit'}
+
+-# %div.form-inline.my-2.my-lg-0
+-#   = form_tag(controller: 'resources', action: 'search', :method => 'get') do
+-#     %input.form-control.mr-sm-2{type: 'text', name: 'tag', placeholder: 'Search'}
+-#     %input.btn.btn-outline-info.my-2.my-sm-0{type: 'submit'}
 
 %ul
   -@resources.each do |resource|
     -if resource.teachers_only?
     -else
+      %br
       %li.resource-item
         %ul.resource-details
           %li.resource-title= resource.title
           %li.resource-url= link_to resource.url, resource.url
           %li.resource-tags
             - resource.tags.each do |tag|
-              %span= tag.name
+              %span.badge.badge-info= tag.name
           %li.resource-fans
             Fans:
             = resource.favorites_count
-
-
