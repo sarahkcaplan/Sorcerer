@@ -3,7 +3,7 @@
   = current_user.first_name.capitalize
 
 %ul.resources-classification
-  %li= link_to "Favorites", favorites_path
+  %li.btn.btn-light= link_to "Favorites", favorites_path
 
 %ul.container
   -@resources.each do |resource|
