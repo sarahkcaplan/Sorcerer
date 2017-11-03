@@ -13,6 +13,11 @@ class ResourceTagsController < ApplicationController
   end
 
   def destroy
+    p "***************************************"
+    p params[:id]
+    @resource_tag = ResourceTag.find(params[:id])
+    @resource_tag.destroy
+    redirect_to user_path(current_user)
   end
 
 
