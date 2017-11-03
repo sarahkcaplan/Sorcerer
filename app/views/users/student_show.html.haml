@@ -3,7 +3,7 @@
   = current_user.first_name.capitalize
 
 %ul.resources-classification
-  %li.btn.btn-light.favorites-link= link_to "My Favorites", favorites_path, remote: true
+  %li.favorites-link= link_to "My Favorites", favorites_path, remote: true
   %div.favorites-partial
 
 %ul.container
