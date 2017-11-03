@@ -1,5 +1,7 @@
 class ResourcesController < ApplicationController
-include SessionsHelper
+
+  include SessionsHelper
+
 
   def index
       @resources = Resource.all
@@ -11,7 +13,7 @@ include SessionsHelper
 
   def create
     @resource = Resource.new(resource_params)
-    @resource.user = current_user
+  @resource.author = current_user
 
     if @resource.save
       redirect_to resources_path
