@@ -9,6 +9,7 @@
   %li= link_to "My Resources", my_resources_path(current_user)
 
 %ul.resources-list
+%br
   = render partial: '/partials/teachers_resource_display'
 
 = link_to "Add Resource", new_resource_path
