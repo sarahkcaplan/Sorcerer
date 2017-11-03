@@ -3,6 +3,7 @@ class FavoritesController < ApplicationController
 
   def index
     @favorites = current_user.favorites
+    @resources = current_user.resources_favorited
   end
 
   def show
@@ -27,10 +28,11 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    @favorite = Favorite.find(params[:id])
-    p "******************"
-    p params[:id]
-    @favorite.destroy
+  #   @user_favorite = current_user.favorites.find_by(resource_id: params[:id])
+  #   p "******************"
+  #   p user_favorite
+  #   @favorite.destroy
+  #   redirect_to user_path(current_user)
   end
 
 end

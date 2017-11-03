@@ -2,8 +2,6 @@ class UsersController < ApplicationController
 include SessionsHelper
 
   def show
-      p "*****************"
-      p current_user
       if current_user && current_user.user_type == 'teacher'
         @resources = Resource.all
         render :teacher_show
