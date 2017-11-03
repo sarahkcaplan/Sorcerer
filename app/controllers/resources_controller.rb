@@ -30,10 +30,8 @@ class ResourcesController < ApplicationController
 
   def search
     tag = search_params[:tag]
-    p "xxXXX**********************************************!!!!"
-    p tag
     @resources = Resource.resources_by_tags(tag)
-    p @resources
+
     if !logged_in?
       render :index
     elsif current_user.user_type == "teacher"

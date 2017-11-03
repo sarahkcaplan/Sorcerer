@@ -5,8 +5,10 @@
 
 %ul.resources-classification
   %li= link_to "All Resources", user_path(current_user)
-  %li= link_to "Favorites", favorites_path
+  %li= link_to "Favorites", my_favorites_path(current_user), remote: true
   %li= link_to "My Resources", my_resources_path(current_user)
 
 %ul.resources-list
-  = render partial: 'teachers_resource_display'
+  = render partial: '/partials/teachers_resource_display'
+
+= link_to "Add Resource", new_resource_path
