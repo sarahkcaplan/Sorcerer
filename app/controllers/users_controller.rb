@@ -5,7 +5,7 @@ include SessionsHelper
       if current_user && current_user.user_type == 'teacher'
         @resources = Resource.all
         render :teacher_show
-      elsif current_user && current_user == 'student'
+      elsif current_user && current_user.user_type == 'student'
         @resources = Resource.all
         render :student_show
       else
