@@ -23,5 +23,13 @@
 
 
     <%= yield %>
+
+    <% if @errors %>
+      <ul>
+      <% @errors.each do |error| %>
+        <li><%= error %></li>
+      </ul>
+      <% end %>
+    <% end %>
   </body>
 </html>
