@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :resources do
     resources :favorites, only: [:create, :destroy]
   end
+  resources :favorites, only: [:index]
 
   root to: "resources#index"
 

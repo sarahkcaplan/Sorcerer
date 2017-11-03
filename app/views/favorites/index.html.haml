@@ -1,0 +1,16 @@
+%H2 Your Favorite Resources
+
+%ul
+  -@resources.each do |resource|
+    %li.resource-item
+      %ul.resource-details
+        %li.resource-title= resource.title
+        %li.resource-url= link_to resource.url, resource.url
+        %li.resource-tages
+          -resource.tags.each do |tag|
+            %span= tag.name
+        %li.resource-fans
+          Fans:
+          = resource.favorites_count
+          = form_for(:favorite, url: resource_favorite_path(resource_id: resource.id, id: find_favorite(current_user, resource).id), method: "DELETE") do |f|
+            = f.submit("Remove Favorite")
