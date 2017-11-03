@@ -10,14 +10,17 @@
 
   <body>
     <header>
-     <h1>Sourcerer</h1>
-
       <% if logged_in?  %>
         <%= link_to "Logout", sessions_path, method: "DELETE" %>
+        <%= link_to "My Resources", user_path(current_user)  %>
       <% else %>
         <%= link_to "login", new_session_path %>
+        <%= link_to "Register", new_user_path  %>
       <% end %>
+      <%= link_to "Home", resources_path  %>
     </header>
+    <h1>Sourcerer</h1>
+
 
     <%= yield %>
   </body>

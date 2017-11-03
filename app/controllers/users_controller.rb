@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.user_type = params[:user_type]
     if @user.save
       session[:id] = @user.id
       redirect_to user_path(@user), notice: "User was successfully created."
@@ -34,7 +35,7 @@ class UsersController < ApplicationController
   def destroy
     user = User.find(params[:id])
     user.destroy
-    redirect_to resources_path, notice: "User was successfully destroyed."
+    redirect_to sessions_path, notice: "User was successfully destroyed."
   end
 
   private
