@@ -8,6 +8,7 @@
 %br
 %ul
   -@resources.each do |resource|
+    %br
     -if resource.teachers_only?
     -else
       %li.resource-item
@@ -19,4 +20,4 @@
               %span= tag.name
           %li.resource-fans
             Fans:
-            = resource.favorites_coun
+            = resource.favorites_count
