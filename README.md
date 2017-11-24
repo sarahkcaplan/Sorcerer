@@ -1,5 +1,14 @@
 # README
 
+This is a project by
+
+@cosmosiris - Iris Nevis
+
+@maluisar - Maria Luisa Rhodes
+
+@sarahkcaplan - Sarah Caplan
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
