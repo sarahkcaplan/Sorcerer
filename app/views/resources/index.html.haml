@@ -1,12 +1,14 @@
 %h1 Resources
 
-%div.search-bar
-  = form_tag(search_resources_path) do
-    %input{type: 'text', name: 'tag', placeholder: 'Search'}
-    %input{type: 'submit'}
+-# %div.search-bar
+-#   = form_tag(controller: 'resources', action: 'search', :method => 'get') do
+-#     %input{type: 'text', name: 'tag', placeholder: 'Search'}
+-#     %input{type: 'submit'}
 
+%br
 %ul
   -@resources.each do |resource|
+    %br
     -if resource.teachers_only?
     -else
       %li.resource-item
@@ -19,5 +21,3 @@
           %li.resource-fans
             Fans:
             = resource.favorites_count
-
-

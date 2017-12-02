@@ -1,15 +1,42 @@
 class FavoritesController < ApplicationController
   include SessionsHelper
 
+  def index
+    @favorited_resources = current_user.resources_favorited
+
+    respond_to do |f|
+      f.html { render :_index}
+      f.json { render json: @favorited_resources.to_json}
+      f.js
+    end
+  end
+
+  def show
+
+  end
+
+  def new
+
+  end
+
   def create
-    @favorite = Favorite.find_or_create_by(resource_id: params[:resource_id], fan_id: current_user.id)
-    p "All favorites", Favorite.all
+    @favorite = current_user.favorites.find_or_create_by(resource_id: params[:resource_id])
+    redirect_to :back
+  end
+
+  def edit
+
+  end
+
+  def update
+
   end
 
   def destroy
-    @favorite = Favorite.where(resource_id: params[:id], fan_id: current_user.id)
-    favorite_id = @favorite.id
-    Favorite.destroy(favorite_id)
+    @favorite = current_user.favorites.find(params[:id])
+
+    @favorite.destroy
+    redirect_to favorites_path
   end
 
 end

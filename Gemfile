@@ -29,6 +29,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'faker'
 gem 'haml-rails', '~> 1.0'
 
+# Use Bootstrap for CSS framework
+gem 'bootstrap', '~> 4.0.0.beta2'
+gem 'bootstrap_form'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
